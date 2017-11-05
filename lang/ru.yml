@@ -1,0 +1,157 @@
+ru:
+  AssetAdmin:
+    ADDFILES: "Добавить файлы"
+    ActionAdd: "Добавить папку"
+    AppCategoryArchive: Архив
+    AppCategoryAudio: Аудио
+    AppCategoryDocument: Документ
+    AppCategoryFlash: Flash
+    AppCategoryImage: Изображение
+    AppCategoryVideo: Видео
+    BackToFolder: "Вернуться к папке"
+    CMSMENU_OLD: "Файлы (прошлые)"
+    CREATED: Дата
+    CurrentFolderOnly: "Только в этой папке?"
+    DetailsView: Подробности
+    FILES: Файлы
+    FILESYSTEMSYNC: Синхронизировать
+    FILESYSTEMSYNCTITLE: "Обновление базы данных файловой системы. Стоит использовать, если новые файлы были загружены без использования CMS, например, через FTP."
+    FROMTHEINTERNET: "Из интернета"
+    FROMYOURCOMPUTER: "С вашего компьютера"
+    Filetype: "Тип файла"
+    ListView: "В виде списка"
+    MENUTITLE: Файлы
+    NEWFOLDER: "Новая папка"
+    SIZE: Размер
+    THUMBSDELETED: "{count} неиспользуемых миниатюр удалено"
+    TreeView: "В виде дерева"
+    Upload: Загрузить
+  AssetAdmin_DeleteBatchAction:
+    TITLE: "Удалить папки"
+  AssetAdmin_Tools:
+    FILTER: Фильтр
+  AssetAdmin_left_ss:
+    GO: Выбрать
+  Folder:
+    AddFolderButton: "Добавить папку"
+    DELETEUNUSEDTHUMBNAILS: "Удалить неиспользуемые миниатюры"
+    UNUSEDFILESTITLE: "Неиспользуемые файлы"
+    UNUSEDTHUMBNAILSTITLE: "Неиспользуемые миниатюры"
+    UploadFilesButton: Загрузить
+  SiteTree:
+    PAGETITLE: 'Заголвок h1'
+  Page:
+    MetaTitle: 'Title страницы'
+    Template: 'Шаблон'
+    MenuGroup: 'Группа меню'
+    MenuGroup0: 'Без группы'
+    MenuGroup1: 'Группа 1'
+    MenuGroup2: 'Группа 2'
+    db_Introtext: 'Короткий текст'
+    CMSTabs:
+      Gallery: 'Галерея'
+  Common:
+    EmptyChoice: '(Выберите из списка)'
+    Unit:
+      kg: 'кг'
+      gr: 'гр'
+      mm: 'мм'
+  Date:
+    DateFormatNice: 'd {month} Y'
+    Months:
+      1: 'Января'
+      2: 'Февраля'
+      3: 'Марта'
+      4: 'Апреля'
+      5: 'Мая'
+      6: 'Июня'
+      7: 'Июля'
+      8: 'Августа'
+      9: 'Сентября'
+      10: 'Октября'
+      11: 'Ноября'
+      12: 'Декабря'
+  Validation:
+    Required: 'Это поле является обязательным для заполнения'
+  Form:
+    FIELDISREQUIRED: 'Поле {name} является обязательным для заполнения'
+  GridFieldExtensions:
+    ADD: 'Добавить'
+    CONFIRMDEL: 'Вы дейтвительно хотите удалть эту запись?'
+  GRIDFIELD_BULK_UPLOAD:
+    FINISH_BTN_LABEL: 'Завершить'
+    CANCEL_BTN_LABEL: 'Отменить'
+    CLEAR_ERROR_BTN_LABEL: 'Скрыть ошибки'
+    EDIT_ALL_BTN_LABEL: 'Редактировать все'
+  GRIDFIELD_BULK_MANAGER:
+    COMPONENT_TITLE: 'Редактировать несколько записей одновременно'
+    EDIT_SELECT_LABEL: 'Редактировать'
+    UNLINK_SELECT_LABEL: 'Отвязать'
+    DELETE_SELECT_LABEL: 'Удалить'
+    ACTION_BTN_LABEL: 'Редактировать'
+    SELECT_ALL_LABEL: 'Выбрать все'
+  GRIDFIELD_BULKMANAGER_EDIT_HANDLER:
+    HEADER_TEXT: 'Редактирование {count} {class}'
+    TOGGLE_ALL_LINK: 'Показать/Скрыть все'
+    SAVE_BTN_LABEL: 'Сохранить все'
+    CANCEL_BTN_LABEL: 'Отменить'
+    SAVE_RESULT_TEXT: '{count} {class} успешно сохранено.'
+  Member:
+    REMEMBERME: 'Запомнить меня'
+  File:
+    IccType: 'ICC profile - набор данных, характеризующий устройство цветного ввода или вывода или цветовое пространство'
+  SiteConfig:
+    Email: Email для отображения на сайте
+    Schedule: Режим работы
+    Schedule2: Режим работы
+    Address: Адрес
+    Address2: Адрес
+    Phone: Номер телефона
+    Phone2: Номер телефона
+    Footer: Код для вставки в конец страницы
+    CMSTabs:
+      Placeholders: 'Параметры'
+    db_NoImage: 'Изображение'
+    db_NoPhoto: 'Аватар'
+    db_PrivacyPage: 'Страница с политикой конфиденциальности'
+  CMSSettingsController:
+    MENUTITLE: Настройки
+  LeftAndMain:
+    HELP: Помощь
+  SecurityAdmin:
+    MENUTITLE: Безопасность
+  ReportAdmin:
+    MENUTITLE: Отчеты
+  Image:
+    PLURALNAME: Изображения
+    SINGULARNAME: Изображение
+  GalleryItem:
+    PLURALNAME: Изображения
+    SINGULARNAME: Изображение
+  UploadField:
+    ATTACHFILE: 'Прикрепить файл'
+    ATTACHFILES: 'Прикрепить файлы'
+    AttachFile: 'Прикрепить файл(ы)'
+    CHOOSEANOTHERFILE: 'Выбрать другой файл'
+    CHOOSEANOTHERINFO: 'Заменить файл файлом из файлов'
+    DELETE: 'Удалить из файлов'
+    DELETEINFO: 'Удалить совсем'
+    DOEDIT: Сохранить
+    DROPFILE: 'Перенесите сюда файл'
+    DROPFILES: 'Перенесите сюда файлы'
+    Dimensions: Размеры
+    EDIT: Редактировать
+    EDITINFO: 'Редактировать файл'
+    FIELDNOTSET: 'Информация о файле не найдена'
+    FROMCOMPUTER: 'Загрузить с компьютера'
+    FROMCOMPUTERINFO: 'Из файлов'
+    FROMFILES: 'Из файлов'
+    MAXNUMBEROFFILES: 'Превышено допустимое ({count}) количество файлов'
+    MAXNUMBEROFFILESONE: 'Можно загрузить только один файл'
+    MAXNUMBEROFFILESSHORT: 'Можно загрузить {count} файлов'
+    OVERWRITEWARNING: 'Файл с таким именем уже существует'
+    REMOVE: Удалить
+    REMOVEINFO: 'Удалить файл, не затрагивая хранилище'
+    Saved: Сохранен
+  AssetTableField:
+    TITLE: Название

@@ -1,0 +1,6 @@
+---
+Name: unicontent
+---
+Director:
+  rules:
+    'robots.txt': 'RobotsController'

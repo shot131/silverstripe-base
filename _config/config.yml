@@ -1,0 +1,128 @@
+---
+Name: unicontent
+After:
+  - 'framework/*'
+  - 'cms/*'
+---
+# YAML configuration for SilverStripe
+# See http://doc.silverstripe.org/framework/en/topics/configuration
+# Caution: Indentation through two spaces, not tabs
+File:
+  extensions:
+    - FileExtension
+  allowed_extensions:
+    - 'rar'
+Image:
+  extensions:
+    - ImageExtension
+
+SiteConfig:
+  extensions:
+    - UniSiteConfigExtension
+
+Form:
+  extensions:
+    - FormExtension
+FormField:
+  extensions:
+    - FormFieldExtension
+
+DropdownField:
+  extensions:
+    - DropdownFieldExtension
+
+SiteTree:
+  meta_generator: ''
+  create_default_pages: false
+
+Page:
+  extensions:
+    - ColumnizedExtension
+
+PaginatedList:
+  extensions:
+    - ColumnizedExtension
+
+Date:
+  extensions:
+    - DateExtension
+
+HTTP:
+  cache_control:
+    no-transform: "false"
+    no-store: "true"
+
+URLSegmentFilter:
+  default_allow_multibyte: true
+  default_replacements:
+    '/А/iu': 'a'
+    '/Б/iu': 'b'
+    '/В/iu': 'v'
+    '/Г/iu': 'g'
+    '/Д/iu': 'd'
+    '/Е/iu': 'e'
+    '/Ё/iu': 'yo'
+    '/Ж/iu': 'j'
+    '/З/iu': 'z'
+    '/И/iu': 'i'
+    '/Й/iu': 'i'
+    '/К/iu': 'k'
+    '/Л/iu': 'l'
+    '/М/iu': 'm'
+    '/Н/iu': 'n'
+    '/О/iu': 'o'
+    '/П/iu': 'p'
+    '/Р/iu': 'r'
+    '/С/iu': 's'
+    '/Т/iu': 't'
+    '/У/iu': 'u'
+    '/Ф/iu': 'f'
+    '/Х/iu': 'h'
+    '/Ц/iu': 'c'
+    '/Ч/iu': 'ch'
+    '/Ш/iu': 'sh'
+    '/Щ/iu': 'shh'
+    '/Ъ/iu': ''
+    '/Ы/iu': 'y'
+    '/Ь/iu': ''
+    '/Э/iu': 'e'
+    '/Ю/iu': 'yu'
+    '/Я/iu': 'ya'
+
+UniCurrency:
+  currency_symbol: 'Р'
+
+
+
+Varchar:
+  extensions:
+    - VarcharExtension
+Text:
+  extensions:
+    - VarcharExtension
+    - TextExtension
+
+SSViewer:
+  rewrite_hash_links: false
+Director:
+  alternate_base_url: '/'
+
+DebugBar:
+  include_jquery: false
+  disabled: true
+  enabled_in_admin: false
+
+DataList:
+  extensions:
+    - ListRandomExtension
+    - DataListExtension
+ArrayList:
+  extensions:
+    - ListRandomExtension
+    - DataListExtension
+Injector:
+  Currency:
+    class: UniCurrency
+ErrorPage_Controller:
+  extensions:
+    - ErrorPage_ControllerExtension
