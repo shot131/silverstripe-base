@@ -1,0 +1,13 @@
+{
+  "name": "unicontent/silverstripe-base",
+  "description": "Base module for Silverstripe CMS",
+  "type": "silverstripe-module",
+  "require": {
+    "php": ">=7.1",
+    "silverstripe/cms": "^3.6",
+    "silverstripe/framework": "^3.6"
+  },
+  "extra": {
+    "installer-name": "base"
+  }
+}
