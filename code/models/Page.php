@@ -30,7 +30,7 @@ class Page extends SiteTree {
     public function Breadcrumbs($maxDepth = 20, $unlinked = false, $stopAtPageType = false, $showHidden = false) {
         $pages = $this->getBreadcrumbItems($maxDepth, $stopAtPageType, $showHidden);
         $pages->pop();
-        return $pages->renderWith('BreadcrumbsTemplate');
+        return $pages->renderWith('Breadcrumbs');
     }
 
     public function requireDefaultRecords() {
