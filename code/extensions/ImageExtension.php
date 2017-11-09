@@ -3,8 +3,8 @@
 class ImageExtension extends Extension {
 
     public function onAfterUpload() {
-        if ($this->owner->getWidth() > 1024 || $this->owner->getHeight() > 1024) {
-            copy($this->owner->Fit(1024, 1024)->getFullPath(), $this->owner->getFullPath());
+        if ($this->owner->getWidth() > 1920 || $this->owner->getHeight() > 1080) {
+            copy($this->owner->Fit(1920, 1080)->getFullPath(), $this->owner->getFullPath());
         }
         $this->owner->Title = '';
         $this->owner->write();
