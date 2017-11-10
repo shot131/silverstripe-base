@@ -15,13 +15,17 @@ class CMSTreeParent extends Extension {
         ));
     }
 
-    public function CMSTreeChildren() {
+    public function CMSTreeChildren($excludeID = null) {
         $childClass = Config::inst()->get($this->ownerBaseClass, 'hide_from_hierarchy');
+        /** @var DataList $children */
         $children = $childClass::get()->filter([
             'ParentID' => $this->owner->ID,
-            'ShowInMenus' => true
-        ])->sort('Created', 'DESC');
-        return $children;
+            'ShowInMenus' => true,
+        ]);
+        if ($excludeID) {
+            $children = $children->exclude('ID', $excludeID);
+        }
+        return $children->sort('Created', 'DESC');
     }
 
     public function RecursiveCMSTreeChildren() {
