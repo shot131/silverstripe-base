@@ -4,7 +4,7 @@ if(class_exists('Imagick')){Image::set_backend('ImagickBackend');}
 
 Injector::inst()->registerService(new SmtpMailer(), 'Mailer');
 
-HtmlEditorConfig::get('cms')->setOption('content_css', "unicontent/css/editor.css");
+HtmlEditorConfig::get('cms')->setOption('content_css', "base/css/editor.css");
 
 // Set the site locale
 i18n::set_locale('ru_RU');
