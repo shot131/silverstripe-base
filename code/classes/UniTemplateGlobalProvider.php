@@ -23,8 +23,12 @@ class UniTemplateGlobalProvider implements TemplateGlobalProvider {
         return new ArrayList($tours);
     }
 
+    public static function FormatFileSize($size) {
+        return File::format_size($size);
+    }
+
     public static function get_template_global_variables() {
-        return ['ProjectDir', 'CurrentTime', 'EmplIntervalsJSON', 'OperIntervalsJSON', 'EmplIncreaseJSON', 'CalcPricesJSON', 'ZeroPricesJSON', 'PageByID', 'Showcase'];
+        return ['ProjectDir', 'CurrentTime', 'EmplIntervalsJSON', 'OperIntervalsJSON', 'EmplIncreaseJSON', 'CalcPricesJSON', 'ZeroPricesJSON', 'PageByID', 'Showcase', 'FormatFileSize'];
     }
 
 }

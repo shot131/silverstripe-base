@@ -6,7 +6,7 @@ class ImageExtension extends Extension {
         if ($this->owner->getWidth() > 1920 || $this->owner->getHeight() > 1080) {
             copy($this->owner->Fit(1920, 1080)->getFullPath(), $this->owner->getFullPath());
         }
-        $this->owner->Title = '';
+        //$this->owner->Title = '';
         $this->owner->write();
     }
 
