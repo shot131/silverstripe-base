@@ -1,6 +1,12 @@
 <?php
 
+/**
+ * Class ImageExtension
+ * @property Image $owner
+ */
 class ImageExtension extends Extension {
+
+    private $isNotEmpty = true;
 
     public function onAfterUpload() {
         if ($this->owner->getWidth() > 1920 || $this->owner->getHeight() > 1080) {
@@ -24,6 +30,15 @@ class ImageExtension extends Extension {
         } else {
             return $this->owner->Pad($width, $height, $color);
         }
+    }
+
+    public function getIsNotEmpty(): bool {
+        return $this->isNotEmpty;
+    }
+
+    public function setIsNotEmpty($isNotEmpty = false) {
+        $this->isNotEmpty = $isNotEmpty;
+        return $this->owner;
     }
 
 }

@@ -3,8 +3,7 @@
 class ErrorPage_ControllerExtension extends Extension {
 
     public function afterInit() {
-        global $project;
-        Requirements::clear($project.'/assets/build/global.js');
+        Requirements::clear('assets/site/build/global.js');
     }
 
 }

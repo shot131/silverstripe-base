@@ -42,6 +42,10 @@ class YaDummy {
         return html_entity_decode($matches[1]);
     }
 
+    public static function code($length = 10) {
+        return Helpers::generateRandomString($length);
+    }
+
     //fname, lname, userpic, phone, email
     public static function person() {
         $person = @json_decode(file_get_contents('http://randus.ru/api.php'), true);
@@ -67,6 +71,10 @@ class YaDummy {
  * @method static date()
  */
 class YaDummy_cached {
+
+    public static function code($length = 10) {
+        return YaDummy::code($length);
+    }
 
     public static function __callStatic($name, $arguments) {
         $array = unserialize(file_get_contents(__DIR__.'/'.$name));

@@ -26,6 +26,9 @@ class ListRandomExtension extends Extension {
      */
     public function getRandomMany($min, $max = 0) {
         $array = $this->getArray();
+        if ($max > count($array)) {
+            $max = count($array);
+        }
         if (!$max) {
             $count = $min;
         } else {

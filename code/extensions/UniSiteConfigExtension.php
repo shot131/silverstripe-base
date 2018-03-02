@@ -1,4 +1,9 @@
 <?php
+
+/**
+ * Class UniSiteConfigExtension
+ * @property SiteConfig $owner
+ */
 class UniSiteConfigExtension extends DataExtension {
 
     private static $db = array (
@@ -12,10 +17,22 @@ class UniSiteConfigExtension extends DataExtension {
     );
 
     private static $has_one = [
-        'NoImage' => 'Image',
-        'NoPhoto' => 'Image',
+        'DBNoImage' => 'Image',
+        'DBNoPhoto' => 'Image',
         'PrivacyPage' => 'Page'
     ];
+    
+    public function getNoImage(): Image {
+        /** @var Image $image */
+        $image = $this->owner->getComponent('DBNoImage')->setIsNotEmpty(false);
+        return $image;
+    }
+
+    public function getNoPhoto() {
+        /** @var Image $image */
+        $image = $this->owner->getComponent('DBNoPhoto')->setIsNotEmpty(false);
+        return $image;
+    }
 
     public function updateCMSFields(FieldList $fields) {
         $fields->removeByName('Tagline');
@@ -46,8 +63,8 @@ class UniSiteConfigExtension extends DataExtension {
 
         $fields->findOrMakeTab('Root.Placeholders', _t('SiteConfig.CMSTabs.Placeholders', 'Placeholders'));
         $fields->addFieldsToTab('Root.Placeholders', [
-            $uploader1 = UploadField::create('NoImage', _t('SiteConfig.db_NoImage', 'NoImage')),
-            $uploader2 = UploadField::create('NoPhoto', _t('SiteConfig.db_NoPhoto', 'NoPhoto')),
+            $uploader1 = UploadField::create('DBNoImage', _t('SiteConfig.db_NoImage', 'NoImage')),
+            $uploader2 = UploadField::create('DBNoPhoto', _t('SiteConfig.db_NoPhoto', 'NoPhoto')),
             TreeDropdownField::create('PrivacyPageID', _t('SiteConfig.db_PrivacyPage', 'PrivacyPage'), 'SiteTree')
         ]);
         $uploader1->getValidator()->setAllowedExtensions(['jpg', 'png', 'jpeg']);

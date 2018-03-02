@@ -83,4 +83,8 @@ class UniPaginatedList extends PaginatedList {
         return $this->getTotalItems();
     }
 
+    public function TotalCountUnit($f0, $f1, $f2) {
+        return Helpers::plural($this->getTotalItems(), $f0, $f1, $f2);
+    }
+
 }

@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * @property Page $dataRecord
+ * Class Page_Controller
+ */
 class Page_Controller extends ContentController {
 
     protected $templates = [];
@@ -12,9 +16,8 @@ class Page_Controller extends ContentController {
             array_unshift($this->templates, 'AjaxPage');
         }
         $this->extend('beforeInit');
-        global $project;
-        Requirements::css($project.'/assets/build/global.css');
-        Requirements::javascript($project.'/assets/build/global.js');
+        Requirements::css('assets/site/build/global.css');
+        Requirements::javascript('assets/site/build/global.js');
         $this->extend('afterInit');
     }
 

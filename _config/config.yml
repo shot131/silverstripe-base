@@ -1,5 +1,5 @@
 ---
-Name: unicontent
+Name: base
 After:
   - 'framework/*'
   - 'cms/*'
@@ -19,13 +19,6 @@ Image:
 SiteConfig:
   extensions:
     - UniSiteConfigExtension
-
-Form:
-  extensions:
-    - FormExtension
-FormField:
-  extensions:
-    - FormFieldExtension
 
 DropdownField:
   extensions:
@@ -92,8 +85,6 @@ URLSegmentFilter:
 UniCurrency:
   currency_symbol: 'Р'
 
-
-
 Varchar:
   extensions:
     - VarcharExtension
@@ -126,3 +117,7 @@ Injector:
 ErrorPage_Controller:
   extensions:
     - ErrorPage_ControllerExtension
+
+Filesystem:
+  sync_blacklisted_patterns:
+    - '/^site$/'

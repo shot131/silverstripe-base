@@ -22,7 +22,7 @@ class GalleryExtension extends DataExtension {
 
     public function getGallery() {
         if ($this->owner->Images()->exists()) return $this->owner->Images()->sort('SortOrder', 'ASC');
-        else return new ArrayList([SiteConfig::current_site_config()->NoImage()]);
+        else return new ArrayList([SiteConfig::current_site_config()->getNoImage()]);
     }
 
     public function HasGallery() {

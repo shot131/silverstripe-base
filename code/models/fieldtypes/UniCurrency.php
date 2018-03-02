@@ -1,6 +1,6 @@
 <?php
 
-class UniCurrency extends DBInt {
+class UniCurrency extends DBFloat {
 
     public function Nice() {
         $val = number_format(
