@@ -6,7 +6,7 @@
  */
 class ImageExtension extends Extension {
 
-    private $isNotEmpty = true;
+    private $isDefault = false;
 
     public function onAfterUpload() {
         if ($this->owner->getWidth() > 1920 || $this->owner->getHeight() > 1080) {
@@ -32,12 +32,12 @@ class ImageExtension extends Extension {
         }
     }
 
-    public function getIsNotEmpty(): bool {
-        return $this->isNotEmpty;
+    public function getIsDefault(): bool {
+        return $this->isDefault;
     }
 
-    public function setIsNotEmpty($isNotEmpty = false) {
-        $this->isNotEmpty = $isNotEmpty;
+    public function setIsDefault($isDefault = false) {
+        $this->isDefault = $isDefault;
         return $this->owner;
     }
 

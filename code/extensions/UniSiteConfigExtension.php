@@ -24,13 +24,13 @@ class UniSiteConfigExtension extends DataExtension {
     
     public function getNoImage(): Image {
         /** @var Image $image */
-        $image = $this->owner->getComponent('DBNoImage')->setIsNotEmpty(false);
+        $image = $this->owner->getComponent('DBNoImage')->setIsDefault(true);
         return $image;
     }
 
     public function getNoPhoto() {
         /** @var Image $image */
-        $image = $this->owner->getComponent('DBNoPhoto')->setIsNotEmpty(false);
+        $image = $this->owner->getComponent('DBNoPhoto')->setIsDefault(true);
         return $image;
     }
 
