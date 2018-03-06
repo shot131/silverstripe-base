@@ -87,4 +87,18 @@ class UniPaginatedList extends PaginatedList {
         return Helpers::plural($this->getTotalItems(), $f0, $f1, $f2);
     }
 
+    public function getLimitedItems() {
+        $pageLength = $this->getPageLength();
+        if($this->limitItems && $pageLength) {
+            $tmptList = clone $this->list;
+            return $tmptList->limit($pageLength, $this->getPageStart());
+        } else {
+            $this->list;
+        }
+    }
+
+    public function ColumnizedList($colsNum = null, $threshold = null) {
+        return new ColumnizedList(new ArrayList($this->getLimitedItems()->toArray()), $colsNum, $threshold);
+    }
+
 }
