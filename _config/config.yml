@@ -121,3 +121,9 @@ ErrorPage_Controller:
 Filesystem:
   sync_blacklisted_patterns:
     - '/^site$/'
+
+LeftAndMain:
+  extra_requirements_javascript:
+    - 'base/js/DisablePreview.js'
+  extra_requirements_css:
+    - 'base/css/DisablePreview.css'

@@ -1,6 +1,0 @@
----
-Name: base
----
-Director:
-  rules:
-    'robots.txt': 'RobotsController'
