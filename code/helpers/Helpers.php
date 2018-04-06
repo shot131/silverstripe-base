@@ -97,6 +97,35 @@ class Helpers
         return $file;
     }
 
+    public static function load_remote_file(string $src, string $dirName): ?File {
+        $dirPath = sprintf('%s/assets/%s', BASE_PATH, $dirName);
+        if (!is_dir($dirPath)) {
+            mkdir($dirPath);
+        }
+        $fileUrl = sprintf('assets/%s/%s', $dirName, basename($src));
+        $filePath = BASE_PATH.'/'.$fileUrl;
+        $file = File::get()->filter('Filename', $fileUrl);
+        if (!$file->exists()) {
+            if(!@copy($src, $filePath)) {
+                return null;
+            }
+            Filesystem::sync(null, false);
+            $file = File::get()->filter('Filename', $fileUrl);
+            if (!$file->exists()) {
+                return null;
+            }
+        }
+        /** @var File $result */
+        $result = $file->first();
+        return $result;
+    }
+
+    public static function load_remote_image(string $src, string $dirName): ?Image {
+        /** @var Image $result */
+        $result = self::load_remote_file($src, $dirName);
+        return $result;
+    }
+
     public static function rrmdir($dir)
     {
         if (is_dir($dir)) {
