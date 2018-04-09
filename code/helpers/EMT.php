@@ -1541,8 +1541,8 @@ class EMT_Tret_Etc extends EMT_Tret
 		'split_number_to_triads' => array(
 				'description'	=> 'Разбиение числа на триады',				
 				'pattern' 		=> '/([^a-zA-Z0-9<\)]|^)([0-9]{5,})([^a-zA-Z>\(]|$)/eu',
-				'replacement' 	=> '$m[1].str_replace(" ","&thinsp;",EMT_Lib::split_number($m[2])).$m[3] '
-				//'function'	    => 'split_number'
+				//'replacement' 	=> '$m[1].str_replace(" ","&thinsp;",EMT_Lib::split_number($m[2])).$m[3] '
+				'function'	    => 'split_number'
 			),	
 		'expand_no_nbsp_in_nobr' => array(
 				'description'	=> 'Удаление nbsp в nobr/nowrap тэгах',

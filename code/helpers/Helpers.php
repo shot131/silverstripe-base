@@ -121,8 +121,23 @@ class Helpers
     }
 
     public static function load_remote_image(string $src, string $dirName): ?Image {
-        /** @var Image $result */
         $result = self::load_remote_file($src, $dirName);
+        if (!$result) return null;
+        if (!$result instanceof Image) {
+            $type = mime_content_type($result->getFullPath());
+            if (!substr($type, 0, 6) === 'image/') {
+                throw new Exception('File type incorrect');
+            }
+            $mimes = new \Mimey\MimeTypes;
+            $oldFile = $result->getFullPath();
+            $result->setFilename(sprintf('%s.%s', $result->getFilename(), $mimes->getExtension($type)));
+            $result->setClassName('Image');
+            $result->write();
+            if ($oldFile !== $result->getFullPath() && file_exists($oldFile)) {
+                unlink($oldFile);
+            }
+            $result = Image::get()->filter('Filename', $result->getFilename())->first();
+        }
         return $result;
     }
 
