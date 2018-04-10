@@ -97,12 +97,20 @@ class Helpers
         return $file;
     }
 
-    public static function load_remote_file(string $src, string $dirName): ?File {
+    public static function load_remote_file(string $src, string $dirName, string $fileName = ''): ?File {
         $dirPath = sprintf('%s/assets/%s', BASE_PATH, $dirName);
         if (!is_dir($dirPath)) {
-            mkdir($dirPath);
+            mkdir($dirPath, 0777, true);
         }
-        $fileUrl = sprintf('assets/%s/%s', $dirName, basename($src));
+        $ch = curl_init($src);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HEADER, true);
+        curl_setopt($ch, CURLOPT_NOBODY, true);
+        $st = curl_exec($ch);
+        if ($st === false) return null;
+        $type = curl_getinfo($ch, CURLINFO_CONTENT_TYPE);
+        $mimes = new \Mimey\MimeTypes;
+        $fileUrl = sprintf('assets/%s/%s.%s', $dirName, $fileName ?: basename($src), $mimes->getExtension($type));
         $filePath = BASE_PATH.'/'.$fileUrl;
         $file = File::get()->filter('Filename', $fileUrl);
         if (!$file->exists()) {
@@ -120,10 +128,11 @@ class Helpers
         return $result;
     }
 
-    public static function load_remote_image(string $src, string $dirName): ?Image {
-        $result = self::load_remote_file($src, $dirName);
+    public static function load_remote_image(string $src, string $dirName, string $fileName = ''): ?Image {
+        /** @var Image $result */
+        $result = self::load_remote_file($src, $dirName, $fileName);
         if (!$result) return null;
-        if (!$result instanceof Image) {
+        /*if (!$result instanceof Image) {
             $type = mime_content_type($result->getFullPath());
             if (!substr($type, 0, 6) === 'image/') {
                 throw new Exception('File type incorrect');
@@ -137,7 +146,7 @@ class Helpers
                 unlink($oldFile);
             }
             $result = Image::get()->filter('Filename', $result->getFilename())->first();
-        }
+        }*/
         return $result;
     }
 
