@@ -102,51 +102,45 @@ class Helpers
         if (!is_dir($dirPath)) {
             mkdir($dirPath, 0777, true);
         }
-        $ch = curl_init($src);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_HEADER, true);
-        curl_setopt($ch, CURLOPT_NOBODY, true);
-        $st = curl_exec($ch);
-        if ($st === false) return null;
-        $type = curl_getinfo($ch, CURLINFO_CONTENT_TYPE);
-        $mimes = new \Mimey\MimeTypes;
-        $fileUrl = sprintf('assets/%s/%s.%s', $dirName, $fileName ?: basename($src), $mimes->getExtension($type));
-        $filePath = BASE_PATH.'/'.$fileUrl;
-        $file = File::get()->filter('Filename', $fileUrl);
+        $file = File::get()->filter([
+            'RemoteName' => $src
+        ]);
+        /** @var File $result */
         if (!$file->exists()) {
-            if(!@copy($src, $filePath)) {
-                return null;
-            }
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_POST, 0);
+            curl_setopt($ch, CURLOPT_URL, $src);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+            curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.13) Gecko/20080311 Firefox/2.0.0.13');
+            $st = curl_exec($ch);
+            if ($st === false) return null;
+            $type = curl_getinfo($ch, CURLINFO_CONTENT_TYPE);
+            $mimes = new \Mimey\MimeTypes;
+            $ext = $mimes->getExtension($type);
+            if (empty($ext)) return null;
+            $fileUrl = sprintf('assets/%s/%s.%s', $dirName, $fileName ?: basename($src), $ext);
+            $filePath = BASE_PATH.'/'.$fileUrl;
+            $fd = fopen($filePath, 'w');
+            fwrite($fd, $st);
+            fclose($fd);
+            curl_close($ch);
             Filesystem::sync(null, false);
             $file = File::get()->filter('Filename', $fileUrl);
             if (!$file->exists()) {
                 return null;
             }
+            $result = $file->first();
+            $result->setField('RemoteName', $src);
+            $result->write();
+        } else {
+            $result = $file->first();
         }
-        /** @var File $result */
-        $result = $file->first();
         return $result;
     }
 
     public static function load_remote_image(string $src, string $dirName, string $fileName = ''): ?Image {
         /** @var Image $result */
         $result = self::load_remote_file($src, $dirName, $fileName);
-        if (!$result) return null;
-        /*if (!$result instanceof Image) {
-            $type = mime_content_type($result->getFullPath());
-            if (!substr($type, 0, 6) === 'image/') {
-                throw new Exception('File type incorrect');
-            }
-            $mimes = new \Mimey\MimeTypes;
-            $oldFile = $result->getFullPath();
-            $result->setFilename(sprintf('%s.%s', $result->getFilename(), $mimes->getExtension($type)));
-            $result->setClassName('Image');
-            $result->write();
-            if ($oldFile !== $result->getFullPath() && file_exists($oldFile)) {
-                unlink($oldFile);
-            }
-            $result = Image::get()->filter('Filename', $result->getFilename())->first();
-        }*/
         return $result;
     }
 

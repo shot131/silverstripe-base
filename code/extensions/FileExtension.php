@@ -1,6 +1,10 @@
 <?php
 
-class FileExtension extends Extension {
+class FileExtension extends DataExtension {
+
+    private static $db = [
+        'RemoteName' => 'Varchar(255)'
+    ];
 
     public function getSizeRu() {
         $size = $this->owner->getAbsoluteSize();
