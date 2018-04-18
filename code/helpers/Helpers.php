@@ -98,15 +98,15 @@ class Helpers
     }
 
     public static function load_remote_file(string $src, string $dirName, string $fileName = ''): ?File {
-        $dirPath = sprintf('%s/assets/%s', BASE_PATH, $dirName);
-        if (!is_dir($dirPath)) {
-            mkdir($dirPath, 0777, true);
-        }
         $file = File::get()->filter([
             'RemoteName' => $src
         ]);
         /** @var File $result */
         if (!$file->exists()) {
+            $dirPath = sprintf('%s/assets/%s', BASE_PATH, $dirName);
+            if (!is_dir($dirPath)) {
+                mkdir($dirPath, 0777, true);
+            }
             $ch = curl_init();
             curl_setopt($ch, CURLOPT_POST, 0);
             curl_setopt($ch, CURLOPT_URL, $src);
