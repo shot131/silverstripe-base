@@ -19,13 +19,13 @@ class Page extends SiteTree {
         return $fields;
     }
 
-    public function getMenuTitle() {
+    /*public function getMenuTitle() {
         return Helpers::typograph(parent::getMenuTitle());
     }
 
     public function getTitle() {
         return Helpers::typograph(parent::getTitle());
-    }
+    }*/
 
     public function Breadcrumbs($maxDepth = 20, $unlinked = false, $stopAtPageType = false, $showHidden = false) {
         $pages = $this->getBreadcrumbItems($maxDepth, $stopAtPageType, $showHidden);

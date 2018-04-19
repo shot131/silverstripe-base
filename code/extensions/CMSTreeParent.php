@@ -53,4 +53,12 @@ class CMSTreeParent extends Extension {
         return $allids;
     }
 
+    public function onBeforeDelete() {
+        if($this->owner->isInDB() && SiteTree::config()->enforce_strict_hierarchy && $children = $this->CMSTreeChildren()) {
+            foreach($children as $child) {
+                $child->delete();
+            }
+        }
+    }
+
 }
