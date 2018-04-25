@@ -12,6 +12,14 @@ class GalleryExtension extends DataExtension {
         ]
     );
 
+    public function onBeforeDelete() {
+        parent::onBeforeDelete();
+
+        if($this->owner->isInDB()) {
+            $this->owner->Images()->removeAll();
+        }
+    }
+
     public function updateCMSFields(FieldList $fields) {
         $fields->findOrMakeTab('Root.Gallery', _t('Image.PLURALNAME', 'Gallery'));
         $imageField = new SortableUploadField('Images', _t('Image.PLURALNAME', 'Gallery'));
