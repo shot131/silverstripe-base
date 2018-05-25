@@ -93,8 +93,18 @@ class UniPaginatedList extends PaginatedList {
             $tmptList = clone $this->list;
             return $tmptList->limit($pageLength, $this->getPageStart());
         } else {
-            $this->list;
+            return $this->list;
         }
+    }
+
+    public static function get_page_offset(SS_HTTPRequest $request, int $limit): int
+    {
+        $offset = 0;
+        $paginationGetVar = 'page';
+        if($request && isset($request[$paginationGetVar]) && $request[$paginationGetVar] > 1) {
+            $offset = ($request[$paginationGetVar] - 1) * $limit;
+        }
+        return (int)$offset;
     }
 
     public function ColumnizedList($colsNum = null, $threshold = null) {

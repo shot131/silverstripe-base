@@ -15,7 +15,8 @@ class GalleryExtension extends DataExtension {
     public function onBeforeDelete() {
         parent::onBeforeDelete();
 
-        if($this->owner->isInDB()) {
+        $stage = Versioned::current_stage();
+        if($this->owner->isInDB() && $stage === 'Stage') {
             $this->owner->Images()->removeAll();
         }
     }
