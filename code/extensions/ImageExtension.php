@@ -17,9 +17,14 @@ class ImageExtension extends Extension {
     }
 
     public function PadMax($width, $height, $color = 'FFFFFF') {
+        if (!$this->owner->exists()) {
+            return $this->owner;
+        }
         $srcWidth = $this->owner->getWidth();
         $srcHeight = $this->owner->getHeight();
-        if ($width / $height > $srcWidth / $srcHeight) {
+        $wh = $height > 0 ? $width / $height : 0;
+        $swh = $srcHeight > 0 ? $srcWidth / $srcHeight : 0;
+        if ($wh > $swh) {
             $scalableWidth = false;
         } else {
             $scalableWidth = true;
